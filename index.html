@@ -7,25 +7,52 @@
     body { background-color : rgb(255, 255, 255);}
     feSpotLight {color:purple;}
     .fir {color:rgb(41, 166, 162);}
-    .element_ex {color: bisque; background-color: black;}
+    .element_ex {color: rgb(199, 129, 43); background-color: rgb(255, 255, 255);}
+    li a {
+        color: blueviolet;;
+        text-decoration: none;
+    }
 </style>
 <script>
-    function title_onmouseover(){
-        title.style.color="red";
-    }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('calculateButton').addEventListener('click', function() {
+                const targetDate = new Date('2023-08-24T13:00:00');
+                const currentDate = new Date();
+                
+                const elapsedTimeMilliseconds = targetDate - currentDate;
+                const seconds = Math.floor(elapsedTimeMilliseconds / 1000) % 60;
+                const minutes = Math.floor(elapsedTimeMilliseconds / (1000 * 60)) % 60;
+                const hours = Math.floor(elapsedTimeMilliseconds / (1000 * 60 * 60)) % 24;
+                const days = Math.floor(elapsedTimeMilliseconds / (1000 * 60 * 60 * 24));
+
+                const elapsedTimeElement = document.getElementById('elapsedTime');
+                elapsedTimeElement.textContent = `${-days}일 ${-hours}시간 ${-minutes}분 ${-seconds}초 경과`;
+            });
+
+            function title_onmouseover() {
+                title.style.color = "red";
+            }
+        });
 </script>
 </head>
 <body>
 <h1  id="title" onmouseover="title_onmouseover()">후쿠시마 오염수 방류</h1>
 <p class="fir">일본 정부가 후쿠시마 원자력 발전소의 녹아내린 핵 연료를 냉각하기 위하여 투입된 냉각수와 유입된 지하수가 합쳐진 오염수[1]를 다핵종제거설비(ALPS)로 방사성 동위원소를 처리한 후 바다에 방류하겠다는 계획</p>
-<img src="https://i.namu.wiki/i/Wh4FQr1IIFmDlfC0wPnVG01nDpGG6V-x5UN2oqX67V_Oe_Vh296jNJzD6uYepo7vkVpVs3LF2x5esbP3ebIw4gjper6mf9IQaJighZ_qn4OcmNuCRmRiltvLkm6PRvZjWXIU5QxvbJVdlXEYuaO2HA.webp" width="300px">
+<img src="https://i.namu.wiki/i/Wh4FQr1IIFmDlfC0wPnVG01nDpGG6V-x5UN2oqX67V_Oe_Vh296jNJzD6uYepo7vkVpVs3LF2x5esbP3ebIw4gjper6mf9IQaJighZ_qn4OcmNuCRmRiltvLkm6PRvZjWXIU5QxvbJVdlXEYuaO2HA.webp" width="700px">
+<br>
 <br>
 <h3>목차</h3>
-<li>
-<p><a href="#before">방류 결정 이전</a></p>
-<p><a href="#after">방류 결정 이후</a></p>
-<p><a href="#element">주요 물질들</a></p>
-</li>
+<ul id="list">
+    <li><p><a href="#before">방류 결정 이전</a></p></li>
+    <li><p><a href="#after">방류 결정 이후</a></p></li>
+    <li><p><a href="#element">주요 물질들</a></p></li>
+    <li><p><a href="#attached separately">삼중수소 사진 별도첨부</a></p></li>
+    <li><p><a href="#safe">얼마나 안전할까</a></p></li>
+    <li><p><a href="#elapsed-Time">방류로 부터 경과한 시간</a></p></li>
+</ul>
+<br>
+<hr>
 <h3 id="before">방류 결정 이전</h3>
 <pre><h3>
     2013년 3월 29일, 다핵종제거설비(ALPS)가 시운전을 개시했다. 도쿄전력은 삼중수소 외 62개 핵 물질 대부분을 제거할 수 있다고 주장했다.
@@ -40,8 +67,10 @@
 
     2019년 8월 8일, 도쿄전력이 2022년 여름에 오염수 저장탱크(증설분 포함 137만t)가 가득 찰 것이라는 추산 의견을 발표했다.
 
-    2020년 10월 22일, 일본 원자력규제위원장이 처리 후 배출하면 기준치에 충족하다고 판단했다.</h2></pre>
-<p>체험하지 않은 것은 한 줄도 쓰지 않았다. 그러나 단 한줄도 체험 그대로 쓰지 않았다.</p>
+    2020년 10월 22일, 일본 원자력규제위원장이 처리 후 배출하면 기준치에 충족하다고 판단했다.
+
+</h2></pre>
+<p>여기까지는 방류 결정이전 일본에서 일어났던 일들을 시간순으로 요약한 것이다.</p>
 <hr>
 <h3 id="after">방류 결정 이후</h3>
 <pre><h3>
@@ -115,7 +144,10 @@
     
     2023년 8월 22일, 후쿠시마현 이와키시에서 독자적으로 검사를 하기로 한다. 
     
-    2023년 8월 23일, 마이니치 신문은 "탱크의 70%에는 방사성 물질의 농도가 기준치 미만까지 떨어지지 않은 물이 있다. 이러한 사정으로 인해 방류 완료까지는 오랜 시간이 걸릴 것으로 보인다", "(오염수 외에도) 대량의 핵연료 잔해를 반출할 방법은 여전히 분명하지 않다" 등을 말했다. </h3></pre>
+    2023년 8월 23일, 마이니치 신문은 "탱크의 70%에는 방사성 물질의 농도가 기준치 미만까지 떨어지지 않은 물이 있다. 이러한 사정으로 인해 방류 완료까지는 오랜 시간이 걸릴 것으로 보인다", "(오염수 외에도) 대량의 핵연료 잔해를 반출할 방법은 여전히 분명하지 않다" 등을 말했다. 
+</h3></pre>
+<p>여기까지는 방류 결정이후 일본에서 일어났던 일들을 시간순으로 요약한 것이다.</p>
+<hr>
 <h3 id="element">주요 물질들</h3>
 <pre><h2 class="element_ex">
 삼중수소 (tritium): Specific activity 9,621 Ci/g & 반감기 12.3년 & 원자량 3[14]
@@ -124,5 +156,49 @@
 스트론튬-90 (strontium-90): Specific activity 139 Ci/g & 반감기 28.8년 & 원자량 90[17]
 탄소-14 (carbon-14): Specific activity 4.5 Ci/g & 반감기 5,730년 & 원자량 14[18]
 </h2></pre>
+<img id="attached separately1" src="https://ichef.bbci.co.uk/news/800/cpsprodpb/10296/production/_130389166_6e065756-bf47-46ff-a134-0820374dfbf3.jpg" width="700px">
+<br>
+<br>
+<hr>
+<h3 id="safe">얼마나 안전할까</h3>
+<br>
+<h3>먼저 긍정적인 반응이다</h3>
+<p>모든 과학자가 그 영향에 동의하는 것은 아니지만, 전문가들의 지배적 의견은 방류가 안전하다는 것이다.
+삼중수소는 원래 지구상의 물에서 발견될 수 있다. 많은 과학자가 삼중수소 농도가 낮을 경우 영향이 미미하다고 주장한다. 그러나, 삼중수소가 해저 및 해양 생물에 미칠 영향에 대해 더 많은 연구가 필요하다는 비판적 의견도 있다.
+후쿠시마에 상설사무소를 두고 있는 IAEA는 "독립적 현장 분석" 결과, 방류된 물의 삼중수소 농도가 "방류 상한으로 설정한 리터당 1500베크렐(Bg/L)보다 훨씬 낮았다"고 밝혔다.
+이 상한은 세계보건기구(WHO)의 음용수 상한인 리터당 1만베크렐보다 6배 낮은 수치다.
+포츠머스 대학의 제임스 스미스 환경·지질학 교수는 폐수가 저장될 때 이미 정화 처리된 후 희석되기 때문에 "이론상으로는 이 물을 마실 수 있다"고 말했다.
+프랑스에서 방사능 측정 실험실을 운영하는 물리학자 데이비드 베일리도 이에 동의하며 "중요한 것은 삼중수소의 양"이기 때문에 "예를 들어 어류 개체수가 심각하게 감소하지 않는 한 해당 농도는 해양 생물에 문제가 없다"고 말했다.</p>
+<br>
+<h3>다음으로 부정적인 반응이다</h3>
+<p>하와이대학 해양 생물학자 로버트 리치먼드는 BBC와의 인터뷰에서 "방사선학적·생태학적 영향 평가가 부적절했던 것으로 보인다. 일본이 해당 평가에서 오염수·퇴적물·유기체에 무엇이 유입되는지 감지할 수 없을 뿐만 아니라, 감지하더라도 이를 제거할 방법이 없다는 점이 우려된다. 일단 밖으로 나온 지니를 다시 병에 넣을 수는 없다"고 말했다.
+그린피스 등 환경단체는 2023년 4월 사우스캐롤라이나대학 과학자들이 발표한 논문을 언급하며 더 구체적인 주장을 펼쳤다.
+그린피스 동아시아 지부의 숀 버니 수석 핵 전문가는 삼중수소가 동식물에 미치는 생물학적 영향에 대해 이를 섭취할 경우 "생식력 감소"와 "DNA 등 세포 구조 손상"을 비롯해 "직접적인 부정적 영향"이 나타났다고 말했다.
+중국은 폐수 방출에 반발해 일본 수산물 수입을 금지했다. 언론에 등장한 일부 논객들은 이 조치가 정치적 대응일 수 있다고 생각한다. 특히 일부 전문가들은 방사성 물질 농도가 매우 낮아 수산물에 대한 우려를 뒷받침할 과학적 근거가 없다고도 말한다.</p>
+<br>
+<h3>마지막으로 시민들의 반응이다</h3>
+<p>방사능 측정기 옆으로 자리를 옮긴 후세야씨는 "지금 한 아이의 소변 속 방사능을 측정하고 있다"며 "주로 후쿠시마의 방사능 측정소 '다라치네'에서 운영하는 건강센터에서 후쿠시마 지역 아이들의 소변을 이쪽으로 의뢰한다"고 했다. 측정 시간은 대략 20시간 남짓 걸린다.
+그는 한 아이의 소변 내 방사능 수치가 높아 놀랐던 경험도 나눴다. 그는 "특히 야생 버섯을 좋아했던 아이에게서 방사능 수치가 높게 나왔다"며 "먹는 것에 영향을 많이 받는다"고 답했다.
+후세야씨를 만난 날은 일본이 오염수를 방류를 한 지 세 시간이 채 지나지 않았던 시각이었다. 
+오염수 방류 심정을 묻자, 후세야씨는 잠시 눈을 감고 감정을 추스르는 듯 하더니 이내 눈물을 보였다. 그는 "분명 정부가 약속했는데 변명만 하고 방류를 해치워 버렸다는 것에 대한 불신감과 정말 용서할 수 없다는 마음으로 가득 차 있다"고 답했다.
+그러면서 "아무리 (삼중수소 농도가) 적다든가, 희석했다든가, 조사하고 있다든가 해도, 이런 일을 해서는 안 되는 시대"라며 "오염수를 아무렇지 않게 방류하는 정부와 도쿄전력을 용서할 수 없을 뿐 아니라 부끄럽다"고 했다.</p>
+<img src="https://ichef.bbci.co.uk/news/800/cpsprodpb/EA05/production/_130890995_fukusecond.jpg" width="500px">
+<pre>본 부분은 여러 뉴스를 발췌하여 제작했습니다.
+https://www.bbc.com/korean/66612931
+https://www.nocutnews.co.kr/news/6000969</pre>
+<br>
+<hr>
+<h3 id="elapsed-Time">방류로 부터 경과한 시간</h3>
+<button id="calculateButton">경과 시간 계산</button>
+<p id="elapsedTime"></p>
+<img src="https://image.newsis.com/2021/04/13/NISI20210413_0000726099_web.jpg" width="500px">
+<img src="https://images.chosun.com/resizer/7SbHk3yvwM9ruiUSFxDyHaRdJXs=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/6M7RC5ZM65A5FHRVI2WJX3ZNLM.png" width="500px">
+<br>
+<br>
+
+<h2>후쿠시마 오염수 방류</h2>
+<h3>그 끝은 무엇일까요</h3>
+<p>채널N뉴스 전지훈</p>
+
 </body>
 </html>
